@@ -11,7 +11,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('auth.login');
+        return view('auth.login2');
     }
 
     public function register()
@@ -49,6 +49,12 @@ class AuthController extends Controller
         }
 
         return back()->with('loginError', 'Login failed!');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('login')->with('success', 'Anda telah Logout');
     }
 
 
