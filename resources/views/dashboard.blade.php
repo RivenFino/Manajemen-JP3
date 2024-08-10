@@ -30,7 +30,6 @@
             bottom: 0;
             width: calc(100% - 20px);
             left: 10px;
-            background-color: #343a40;
             padding: 10px 0;
             border-top: 1px solid #dee2e6;
         }
@@ -54,7 +53,7 @@
         }
 
         .sidebar-logout .nav-link:hover {
-            background-color: #c82333;
+            background-color: #991b1b;
         }
 
         /* Navbar brand link style */
@@ -213,10 +212,16 @@
             text-align: center;
             width: 100%;
         }
+
+        .hidden-date-value::-webkit-datetime-edit,
+        .hidden-date-value::-webkit-inner-spin-button,
+        .hidden-date-value::-webkit-clear-button {
+            display: none;
+        }
     </style>
 </head>
 
-<body class=" bg-gray-100">
+<body class="">
     <div class="wrapper">
 
         <!-- Loading Screen -->
@@ -228,14 +233,15 @@
         </div>
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light h-16">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link text-xl" data-widget="pushmenu" href="#" role="button"><i
+                            class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../../index3.html" class="nav-link">BERANDA</a>
+                    <a href="../../index3.html" class="nav-link text-xl items-center align-middle h-auto">BERANDA</a>
                 </li>
             </ul>
 
@@ -253,11 +259,11 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4  bg-zinc-700 rounded-r-2xl ">
             <!-- Sidebar -->
-            <div class="sidebar">
+            <div class="sidebar px-2">
                 <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex ">
                     <div class="image">
                         <img src="{{ asset('img/user.jpg') }}" class="img-circle elevation-2" alt="User Image">
                     </div>
@@ -304,23 +310,24 @@
             </div>
             <!-- /.sidebar -->
             <!-- Sidebar Logout -->
-            <div class="sidebar-logout">
-                <a href="/logout" class="nav-link">
-                    <i class="nav-icon fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
+            <div class="sidebar-logout ">
+                <a href="/logout" class="nav-link flex justify-center items-center ">
+                    <i class="nav-icon fas fa-sign-out-alt text-lg"></i>
+                    <span class="text-lg">Logout</span>
                 </a>
             </div>
             <!-- /.sidebar-logout -->
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper h-[calc(100vh-4rem)] overflow-y-auto bg-gray-200">
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-12">
-                            <h3 class="m-0 content-title">Administrasi Jam Mata Pelajaran Sekolah</h3>
+                            <h3 class="m-0 content-title text-xl text-red-950 font-semibold">Administrasi Jam Mata
+                                Pelajaran Sekolah</h3>
                         </div>
                     </div>
                 </div>
@@ -328,116 +335,153 @@
             <!-- /.content-header -->
 
             <!-- Main content -->
-            <section class="content">
+            <section class="content ">
                 <div class="container-fluid">
-                <section class="flex justify-center items-center flex-col py-12 gap-4">
-        @if(session()->has('success'))
-            <div
-                class="w-48 h-16 flex justify-center items-center bg-green-600 text-white font-bold text-xl rounded-xl shadow-lg">
-                {{ session('success') }}
-            </div>
-        @endif
-        <div class="flex bg-white p-4 w-[1000px] rounded-md justify-center items-center flex-col">
-            <h2>Hi {{ Auth::user()->username}}</h2>
-            <h1 class="text-red-500">Ini halaman Dashboard</h1>
-            <div class="flex w-full justify-end items-end px-24">
-                <a href="/logout"
-                    class="font-bold w-48 h-12 flex justify-center items-center rounded-md bg-yellow-500 hover:bg-yellow-600 text-white">Logout</a>
-            </div>
-        </div>
-        <div class="flex bg-white p-4 w-[1000px] rounded-md justify-center items-center flex-col">
-            <label for="dateInput">Pilih tanggal:</label>
-            <div class="flex justify-center items-center">
-                <input class="bg-gray-200 h-12 w-auto" type="text" id="formattedDateInput" readonly>
-                <input class="bg-gray-200 h-12 w-auto" type="date" id="dateInput" name="dateInput" ">
-            </div>
 
-        </div>
-    </section>
-                    <div class="row">
+                    <!-- <section class="flex justify-center items-center flex-col py-12 gap-6 outline-1 outline-gray-300 bg-gray-50 outline rounded-xl m-12">
+                        <h2 class="text-xl font-medium text-yellow-500">Experiment Section</h2>
+                        @if(session()->has('success'))
+                            <div
+                                class="w-48 h-16 flex justify-center items-center bg-green-600 text-white font-bold text-xl rounded-xl shadow-lg">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        <div class="flex bg-white p-4 w-[1000px] rounded-md justify-center items-center flex-col">
+                            <h2>Hi {{ Auth::user()->username}}</h2>
+                            <h1 class="text-red-500">Ini halaman Dashboard</h1>
+                            <div class="flex w-full justify-end items-end px-24">
+                                <a href="/logout"
+                                    class="font-bold w-48 h-12 flex justify-center items-center rounded-md bg-yellow-500 hover:bg-yellow-600 text-white">Logout</a>
+                            </div>
+                        </div>
+                        <div class="flex bg-white p-4 w-[1000px] rounded-md justify-center items-center flex-col">
+                            <h2>Hi {{ Auth::user()->username}}</h2>
+                            <h1 class="text-red-500">Ini halaman Dashboard</h1>
+                            <div class="flex w-full justify-end items-end px-24">
+                                <a href="/logout"
+                                    class="font-bold w-48 h-12 flex justify-center items-center rounded-md bg-yellow-500 hover:bg-yellow-600 text-white">Logout</a>
+                            </div>
+                        </div>
+                        <div class="flex bg-white p-4 w-[1000px] rounded-md justify-center items-center flex-col">
+                            <h2>Hi {{ Auth::user()->username}}</h2>
+                            <h1 class="text-red-500">Ini halaman Dashboard</h1>
+                            <div class="flex w-full justify-end items-end px-24">
+                                <a href="/logout"
+                                    class="font-bold w-48 h-12 flex justify-center items-center rounded-md bg-yellow-500 hover:bg-yellow-600 text-white">Logout</a>
+                            </div>
+                        </div>
+                        <div class="flex bg-white p-4 w-[1000px] rounded-md justify-center items-center flex-col">
+                            <label for="dateInput">Pilih tanggal:</label>
+                            <div class="flex justify-center items-center cursor-pointer focus:outline">
+                                <input
+                                    class="bg-gray-200 h-12 text-center w-auto focus:border-none cursor-pointer focus:outline-none"
+                                    type="text" id="formattedDateInput" readonly>
+                                <input
+                                    class="bg-gray-200 h-12 w-12 flex justify-center items-center  hidden-date-value  cursor-pointer focus:border-none focus:outline-none"
+                                    type="date" id="dateInput" name="dateInput" ">
+                                    </div>
 
-                        <div class="col-lg-3 col-6 `">
-                            <div class="small-box bg-light">
-                                <div class="inner">
-                                    <h3>40</h3>
-                                    <p>Data Guru</p>
                                 </div>
-                                <div class="icon">
-                                    <i class="fas fa-user-plus"></i>
+                            </section> -->
+                    <div class=" row">
+
+                                <div class="col-lg-3 col-6 `">
+                                    <div class="small-box bg-light">
+                                        <div class="inner">
+                                            <h3>40</h3>
+                                            <p>Data Guru</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fas fa-user-plus"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-6">
+                                    <div class="small-box bg-light">
+                                        <div class="inner">
+                                            <h3>12</h3>
+                                            <p>Data Mata Pelajaran</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fas fa-book"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 flex flex-col justify-between h-full gap-4">
+                                    <div class="form-group ">
+                                        <input type="date" class="form-control h-16"
+                                            placeholder="Type your keywords here">
+                                    </div>
+                                    <div class="input-group input-group-md ">
+                                        <div class="flex justify-center w-full h-16 items-center bg-gray-50">
+
+                                            <input type="search"
+                                                class="form-control bg-gray-50 h-full outline-none border-none w-full"
+                                                placeholder="Cari..">
+                                            <div class="input-group-append bg-gray-50 h-full">
+                                                <button type="submit" class="btn btn-sm bg-transparent h-full">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Nama Guru</th>
+                                                    <th>Mata Pelajaran</th>
+                                                    <th>Total Jam Pelajaran</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Rizki Rahman</td>
+                                                    <td>Rekayasa Perangkat Lunak</td>
+                                                    <td>20 Jam Pelajaran</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Rizki Rahman</td>
+                                                    <td>Rekayasa Perangkat Lunak</td>
+                                                    <td>20 Jam Pelajaran</td>
+                                                </tr>
+                                                <!-- Repeat rows as needed -->
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-lg-3 col-6">
-                            <div class="small-box bg-light">
-                                <div class="inner">
-                                    <h3>12</h3>
-                                    <p>Data Mata Pelajaran</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-book"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input type="date" class="form-control" placeholder="Type your keywords here">
-                            </div>
-                            <div class="input-group input-group-sm">
-                                <input type="search" class="form-control" placeholder="Cari..">
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-sm btn-primary">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Guru</th>
-                                            <th>Mata Pelajaran</th>
-                                            <th>Total Jam Pelajaran</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Rizki Rahman</td>
-                                            <td>Rekayasa Perangkat Lunak</td>
-                                            <td>20 Jam Pelajaran</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Rizki Rahman</td>
-                                            <td>Rekayasa Perangkat Lunak</td>
-                                            <td>20 Jam Pelajaran</td>
-                                        </tr>
-                                        <!-- Repeat rows as needed -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                    </section>
+                    <!-- /.content -->
                 </div>
-            </section>
-            <!-- /.content -->
+                <!-- /.content-wrapper -->
         </div>
-        <!-- /.content-wrapper -->
-    </div>  
 
 
 </body>
 <script>
     const dateInput = document.getElementById('dateInput');
     const formattedDateInput = document.getElementById('formattedDateInput');
+    
+    formattedDateInput.addEventListener('click', function () {
+        dateInput.focus();
+        dateInput.click();
+        });
+
+        dateInput.addEventListener('change', function() {
+            formattedDateInput.value = this.value;
+        });
 
     dateInput.addEventListener('change', function () {
         const date = new Date(this.value);
@@ -464,40 +508,41 @@
     // Trigger change event initially if needed
     dateInput.dispatchEvent(new Event('change'));
 </script>
-        <!-- jQuery -->
-        <script src=" {{ asset('AdminLTE/plugins/jquery/jquery.min.js') }}"></script>
-                <!-- Bootstrap 4 -->
-                <script src="{{ asset('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-                <!-- AdminLTE App -->
-                <script src="{{ asset('AdminLTE/dist/js/adminlte.min.js') }}"></script>
+<!-- jQuery -->
+<script src=" {{ asset('AdminLTE/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('AdminLTE/dist/js/adminlte.min.js') }}"></script>
 
-                <script>
-                    document.addEventListener("DOMContentLoaded", function () {
-                        var loadingScreen = document.getElementById('loading-screen');
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var loadingScreen = document.getElementById('loading-screen');
 
-                        function showLoadingScreen() {
-                            loadingScreen.classList.remove('d-none');
-                        }
+        function showLoadingScreen() {
+            loadingScreen.classList.remove('d-none');
+        }
 
-                        function hideLoadingScreen() {
-                            loadingScreen.classList.add('d-none');
-                        }
-                        // Show loading screen on page load
-                        window.addEventListener('load', function () {
-                            hideLoadingScreen();
-                        });
-                        // Show loading screen on page transition
-                        window.addEventListener('beforeunload', function () {
-                            showLoadingScreen();
-                        });
-                        // Optional: if you want to handle clicks on anchor tags
-                        document.addEventListener('click', function (event) {
-                            var target = event.target.closest('a');
-                            if (target && !target.classList.contains('nav-link') && !target.closest('.sidebar')) {
-                                showLoadingScreen();
-                            }
-                        });
-                    });
-                </script>
+        function hideLoadingScreen() {
+            loadingScreen.classList.add('d-none');
+        }
+        // Show loading screen on page load
+        window.addEventListener('load', function () {
+            hideLoadingScreen();
+        });
+        // Show loading screen on page transition
+        window.addEventListener('beforeunload', function () {
+            showLoadingScreen();
+        });
+        // Optional: if you want to handle clicks on anchor tags
+        document.addEventListener('click', function (event) {
+            var target = event.target.closest('a');
+            if (target && !target.classList.contains('nav-link') && !target.closest('.sidebar')) {
+                showLoadingScreen();
+            }
+        });
+
+    });
+</script>
 
 </html>

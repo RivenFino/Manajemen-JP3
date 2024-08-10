@@ -68,7 +68,7 @@
                             class="text-md h-full flex justify-start w-full border-b-2 text-gray-700 border-gray-700 focus:outline-none bg-transparent h"
                             name="password" placeholder="PASSWORD">
                     </div>
-                    <button class="py-3 w-full bg-red-950 text-white text-xl font-semibold rounded-xl">
+                    <button class="py-3 w-full bg-red-700 text-white text-xl font-semibold rounded-xl">
                         Login
                     </button>
                 </form>
