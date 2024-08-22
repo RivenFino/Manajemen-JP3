@@ -1,16 +1,24 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
+// Route tanpa middleware
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/login', [AuthController::class, 'index']);
-Route::post('/login', [AuthController::class, 'login']);
-Route::get('/logout', [AuthController::class, 'logout']);
-Route::get('/register', [AuthController::class, 'register']);
-Route::post('/register', [AuthController::class, 'store']);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('isLogin');;
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'index'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/register', [AuthController::class, 'register']);
+    Route::post('/register', [AuthController::class, 'store']);
+});
+
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
+
+Route::fallback(function () {
+    return 'Error! - 404';
+});
+
+require __DIR__ . '/admin.php';

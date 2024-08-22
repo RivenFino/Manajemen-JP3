@@ -259,65 +259,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4  bg-zinc-700 rounded-r-2xl ">
-            <!-- Sidebar -->
-            <div class="sidebar px-2">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex ">
-                    <div class="image">
-                        <img src="{{ asset('img/user.jpg') }}" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">Hi!, {{ Auth::user()->username}}</a>
-                    </div>
-                </div>
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-home"></i>
-                                <p>Beranda</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>Data Guru</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-book-open"></i>
-                                <p>Data Mapel</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-clock"></i>
-                                <p>Riwayat</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-newspaper"></i>
-                                <p>Laporan</p>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <!-- /.sidebar -->
-            <!-- Sidebar Logout -->
-            <div class="sidebar-logout ">
-                <a href="/logout" class="nav-link flex justify-center items-center ">
-                    <i class="nav-icon fas fa-sign-out-alt text-lg"></i>
-                    <span class="text-lg">Logout</span>
-                </a>
-            </div>
-            <!-- /.sidebar-logout -->
-        </aside>
+        <x-nav></x-nav>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper h-[calc(100vh-4rem)] overflow-y-auto bg-gray-200">
@@ -385,103 +327,108 @@
                             </section> -->
                     <div class=" row">
 
-                                <div class="col-lg-3 col-6 `">
-                                    <div class="small-box bg-light">
-                                        <div class="inner">
-                                            <h3>40</h3>
-                                            <p>Data Guru</p>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="fas fa-user-plus"></i>
-                                        </div>
-                                    </div>
+                        <div class="col-lg-3 col-6 cursor-pointer" onclick="redirectGuru()">
+                            <div class="small-box bg-light">
+                                <div class="inner">
+                                    <h3>{{$count['guru']}}</h3>
+                                    <p>Data Guru</p>
                                 </div>
-
-                                <div class="col-lg-3 col-6">
-                                    <div class="small-box bg-light">
-                                        <div class="inner">
-                                            <h3>12</h3>
-                                            <p>Data Mata Pelajaran</p>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="fas fa-book"></i>
-                                        </div>
-                                    </div>
+                                <div class="icon">
+                                    <i class="fas fa-user-plus"></i>
                                 </div>
-
-                                <div class="col-lg-6 flex flex-col justify-between h-full gap-4">
-                                    <div class="form-group ">
-                                        <input type="date" class="form-control h-16"
-                                            placeholder="Type your keywords here">
-                                    </div>
-                                    <div class="input-group input-group-md ">
-                                        <div class="flex justify-center w-full h-16 items-center bg-gray-50">
-
-                                            <input type="search"
-                                                class="form-control bg-gray-50 h-full outline-none border-none w-full"
-                                                placeholder="Cari..">
-                                            <div class="input-group-append bg-gray-50 h-full">
-                                                <button type="submit" class="btn btn-sm bg-transparent h-full">
-                                                    <i class="fa fa-search"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Nama Guru</th>
-                                                    <th>Mata Pelajaran</th>
-                                                    <th>Total Jam Pelajaran</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Rizki Rahman</td>
-                                                    <td>Rekayasa Perangkat Lunak</td>
-                                                    <td>20 Jam Pelajaran</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Rizki Rahman</td>
-                                                    <td>Rekayasa Perangkat Lunak</td>
-                                                    <td>20 Jam Pelajaran</td>
-                                                </tr>
-                                                <!-- Repeat rows as needed -->
-                                            </tbody>
-                                        </table>
+                        </div>
+
+                        <div class="col-lg-3 col-6 cursor-pointer" onclick="redirectMapel()">
+                            <div class="small-box bg-light">
+                                <div class="inner cursor-pointer">
+                                    <h3>{{$count['mapel']}}</h3>
+                                    <p>Data Mata Pelajaran</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 flex flex-col justify-between h-full gap-4">
+                            <div class="form-group ">
+                                <input type="date" class="form-control h-16" placeholder="Type your keywords here">
+                            </div>
+                            <div class="input-group input-group-md ">
+                                <div class="flex justify-center w-full h-16 items-center bg-gray-50">
+
+                                    <input type="search"
+                                        class="form-control bg-gray-50 h-full outline-none border-none w-full"
+                                        placeholder="Cari..">
+                                    <div class="input-group-append bg-gray-50 h-full">
+                                        <button type="submit" class="btn btn-sm bg-transparent h-full">
+                                            <i class="fa fa-search"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
-                    <!-- /.content -->
+
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Guru</th>
+                                            <th>Mata Pelajaran</th>
+                                            <th>Total Jam Pelajaran</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Rizki Rahman</td>
+                                            <td>Rekayasa Perangkat Lunak</td>
+                                            <td>20 Jam Pelajaran</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Rizki Rahman</td>
+                                            <td>Rekayasa Perangkat Lunak</td>
+                                            <td>20 Jam Pelajaran</td>
+                                        </tr>
+                                        <!-- Repeat rows as needed -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.content-wrapper -->
+            </section>
+            <!-- /.content -->
         </div>
+        <!-- /.content-wrapper -->
+    </div>
 
 
 </body>
 <script>
+    function redirectMapel() {
+        window.location.href = '{{ route('mapel.tampil') }}';
+    }
+    function redirectGuru() {
+        window.location.href = '{{ route('guru.tampil') }}';
+    }
     const dateInput = document.getElementById('dateInput');
     const formattedDateInput = document.getElementById('formattedDateInput');
-    
+
     formattedDateInput.addEventListener('click', function () {
         dateInput.focus();
         dateInput.click();
-        });
+    });
 
-        dateInput.addEventListener('change', function() {
-            formattedDateInput.value = this.value;
-        });
+    dateInput.addEventListener('change', function () {
+        formattedDateInput.value = this.value;
+    });
 
     dateInput.addEventListener('change', function () {
         const date = new Date(this.value);
@@ -516,33 +463,34 @@
 <script src="{{ asset('AdminLTE/dist/js/adminlte.min.js') }}"></script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var loadingScreen = document.getElementById('loading-screen');
+    function
+        document.addEventListener("DOMContentLoaded", function () {
+            var loadingScreen = document.getElementById('loading-screen');
 
-        function showLoadingScreen() {
-            loadingScreen.classList.remove('d-none');
-        }
-
-        function hideLoadingScreen() {
-            loadingScreen.classList.add('d-none');
-        }
-        // Show loading screen on page load
-        window.addEventListener('load', function () {
-            hideLoadingScreen();
-        });
-        // Show loading screen on page transition
-        window.addEventListener('beforeunload', function () {
-            showLoadingScreen();
-        });
-        // Optional: if you want to handle clicks on anchor tags
-        document.addEventListener('click', function (event) {
-            var target = event.target.closest('a');
-            if (target && !target.classList.contains('nav-link') && !target.closest('.sidebar')) {
-                showLoadingScreen();
+            function showLoadingScreen() {
+                loadingScreen.classList.remove('d-none');
             }
-        });
 
-    });
+            function hideLoadingScreen() {
+                loadingScreen.classList.add('d-none');
+            }
+            // Show loading screen on page load
+            window.addEventListener('load', function () {
+                hideLoadingScreen();
+            });
+            // Show loading screen on page transition
+            window.addEventListener('beforeunload', function () {
+                showLoadingScreen();
+            });
+            // Optional: if you want to handle clicks on anchor tags
+            document.addEventListener('click', function (event) {
+                var target = event.target.closest('a');
+                if (target && !target.classList.contains('nav-link') && !target.closest('.sidebar')) {
+                    showLoadingScreen();
+                }
+            });
+
+        });
 </script>
 
 </html>
